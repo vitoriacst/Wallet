@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Login from './pages/Login';
+import Wallet from './pages/Wallet';
 // import Wallet from './pages/Wallet';
 
 function App() {
@@ -9,9 +10,11 @@ function App() {
     <Router>
       <Switch>
         <Link to="/">Login</Link>
+        <Link to="/carteira">Wallet</Link>
       </Switch>
       <Switch>
         <Route exact path="/" component={ Login } />
+        <Route exact path="/carteira" component={ Wallet } />
       </Switch>
     </Router>
   );

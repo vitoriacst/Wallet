@@ -10,7 +10,7 @@ function loginReducer(state = INITIAL_STATE, action) {
   case LOGIN_INPUT_EMAIL:
     return {
       ...state,
-      email: action.email,
+      email: action.value,
     };
   default:
     return state;

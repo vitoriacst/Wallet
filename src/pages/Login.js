@@ -14,6 +14,16 @@ class Login extends React.Component {
     };
   }
 
+  handleChange = ({ target }) => {
+    const {
+      value,
+      name,
+    } = target;
+    this.setState({
+      [name]: value,
+    }, this.habilitButton);
+  }
+
 // ->essa funcao faz as verificacoes dos valores recebidos dentro dos inputs para que o botao seja hablidade
 habilitButton = () => {
   const {
@@ -21,14 +31,9 @@ habilitButton = () => {
     password,
 
   } = this.state;
-  const passwordLength = 5;
-  const ValidPasswod = password.length >= passwordLength;
-  const emailTest = /^[a-z0-9.]+@[a-z0-9]+.[a-z]+.([a-z]+)?$/i;
-  const isValidEmail = emailTest.test(email);
-  const inputsValue = [ValidPasswod, isValidEmail];
-  const haveThings = inputsValue.every((fields) => fields !== '');
-  const FormValid = isValidEmail && haveThings && ValidPasswod;
-  if (FormValid) {
+  const passwordLength = 6;
+  const emailTest = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  if (emailTest.test(email) && password.length >= passwordLength) {
     this.setState({
       button: false,
     });
@@ -39,18 +44,9 @@ habilitButton = () => {
   }
 };
 
-handleChange = ({ target }) => {
-  const {
-    value,
-    name,
-  } = target;
-  this.setState({
-    [name]: value,
-  }, this.habilitButton());
-}
-
-// //redirect && <Redirect to="/formdisplay" />
-  changeComponent = () => {
+// redirect para outro componente
+  changeComponent = (event) => {
+    event.preventDefault();
     const {
       email,
     } = this.state;
@@ -111,8 +107,10 @@ const mapDispatchToProps = (dispatch) => ({
   user: (email) => dispatch(loginInputEmail(email)),
 });
 
+export default connect(null, mapDispatchToProps)(Login);
 Login.propTypes = {
   user: PropTypes.func.isRequired,
-  history: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
-export default connect(null, mapDispatchToProps)(Login);

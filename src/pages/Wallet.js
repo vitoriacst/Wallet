@@ -4,9 +4,8 @@ class Wallet extends React.Component {
   render() {
     return (
       <h1>
-        CARTEIRA DO PEIXE
+        carteira
       </h1>
-      // <header data-testid="email-field" />
     );
   }
 }

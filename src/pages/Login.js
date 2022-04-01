@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { loginInputEmail } from '../actions/Login';
 
 class Login extends React.Component {
   constructor() {
@@ -85,7 +86,7 @@ handleChange = ({ target }) => {
               value={ email }
             />
             <input
-              name="passwordInput"
+              name="password"
               type="password"
               className="Input-login"
               data-testid="password-input"
@@ -107,7 +108,7 @@ handleChange = ({ target }) => {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  user: (email) => dispatch(loginInputEmai(email)),
+  user: (email) => dispatch(loginInputEmail(email)),
 });
 
 Login.propTypes = {

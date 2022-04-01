@@ -1,30 +1,74 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
   constructor() {
     super();
-    this.setState = {
-      button: false,
+    this.state = {
+      button: true,
       email: '',
       password: '',
-    };
 
-    habilitButton = (event) => {
-      const passwordLength = 3;
-      const formatoEmail = 'alguem@alguem.com'
-        .this.setState(() => ({
-          email: event.target.value === formatoEmail,
-          password: event.target.value.length >= passwordLength,
-        }));
     };
   }
 
+// ->essa funcao faz as verificacoes dos valores recebidos dentro dos inputs para que o botao seja hablidade
+habilitButton = () => {
+  const {
+    email,
+    password,
+
+  } = this.state;
+  const passwordLength = 5;
+  const ValidPasswod = password.length >= passwordLength;
+  const emailTest = /^[a-z0-9.]+@[a-z0-9]+.[a-z]+.([a-z]+)?$/i;
+  const isValidEmail = emailTest.test(email);
+  const inputsValue = [ValidPasswod, isValidEmail];
+  const haveThings = inputsValue.every((fields) => fields !== '');
+  const FormValid = isValidEmail && haveThings && ValidPasswod;
+  if (FormValid) {
+    this.setState({
+      button: false,
+    });
+  } else {
+    this.setState({
+      button: true,
+    });
+  }
+};
+
+handleChange = ({ target }) => {
+  const {
+    value,
+    name,
+  } = target;
+  this.setState({
+    [name]: value,
+  }, this.habilitButton());
+}
+
+// //redirect && <Redirect to="/formdisplay" />
+  changeComponent = () => {
+    const {
+      email,
+    } = this.state;
+    const {
+      user,
+      history,
+    } = this.props;
+    user(email);
+    history.push('/carteira');
+  }
+
   render() {
-    // setando os estados
-    this.setState = {
+  // setando os estados
+
+    const {
       email,
       password,
-    };
+      button,
+    } = this.state;
     // criacao do forms de login
     return (
       <>
@@ -32,21 +76,28 @@ class Login extends React.Component {
         <section>
           <form>
             <input
+              name="email"
               type="email"
               className="Input-login"
               data-testid="email-input"
               id="email"
+              onChange={ this.handleChange }
               value={ email }
-              onChange={ this.habilitButton }
             />
             <input
+              name="passwordInput"
               type="password"
               className="Input-login"
               data-testid="password-input"
+              onChange={ this.handleChange }
               value={ password }
-              onChange={ this.habilitButton }
             />
-            <button type="button">
+            <button
+              type="button"
+              name="button"
+              disabled={ button }
+              onClick={ this.changeComponent }
+            >
               Entrar
             </button>
           </form>
@@ -55,5 +106,12 @@ class Login extends React.Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => ({
+  user: (email) => dispatch(loginInputEmai(email)),
+});
 
-export default Login;
+Login.propTypes = {
+  user: PropTypes.func.isRequired,
+  history: PropTypes.func.isRequired,
+};
+export default connect(null, mapDispatchToProps)(Login);

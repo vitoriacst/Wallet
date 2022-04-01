@@ -1,7 +1,6 @@
 // Coloque aqui suas actions
 // here I called the api
-export const REQUEST_API = 'REQUEST_API';
-export const RESPONSE_API = 'RESPONSE_API';
+
 export const USER = 'USER';
 // action do email de Login
 export const loginInputEmail = (email) => (
@@ -9,7 +8,14 @@ export const loginInputEmail = (email) => (
     type: USER, value: email,
   }
 );
+// action dos gastos  totais contidos no componente header
+export const GASTOS_TOTAIS = 'GASTOS_TOTAIS';
+export const gastosDoUsuario = (despesasTotais) => ({
+  type: GASTOS_TOTAIS, value: despesasTotais,
+});
 
+// export const REQUEST_API = 'REQUEST_API';
+// export const RESPONSE_API = 'RESPONSE_API';
 // export const requestAPI = () => ({ type: REQUEST_API });
 // export const responseApi = (data) => ({ type: RESPONSE_API, data });
 

@@ -1,6 +1,8 @@
 // Coloque aqui suas actions
 // here I called the api
 
+import fetchApiCurrencies from '../service/fetchApiCurrencies';
+
 export const USER = 'USER';
 // action do email de Login
 export const loginInputEmail = (email) => (
@@ -16,23 +18,14 @@ export const gastosDoUsuario = (despesasTotais) => ({
 
 // requisicao da api
 
-export const REQUEST_API = 'REQUEST_API';
-export const RESPONSE_API = 'RESPONSE_API';
-export const requestAPI = () => ({ type: REQUEST_API });
-export const responseApi = (data) => ({ type: RESPONSE_API, data });
-
+export const GET_CURRENCIES = 'GET_CURRENCIES';
+export const getCurrencies = (currencies) => ({ type: GET_CURRENCIES, currencies });
 // make a action
 export function TakeApi() {
   return async (dispatch) => {
     try {
-      dispatch(requestAPI());
-      const response = await fetch('https://economia.awesomeapi.com.br/json/all');
-      const data = await response.json();
-      const TakeData = data.filter((element) => element.entries !== 'USDT');
-      console.log(data);
-      dispatch(
-        responseApi(TakeData),
-      );
+      const response = await fetchApiCurrencies();
+      dispatch(getCurrencies(response));
     } catch (error) {
       console.log(error);
     }

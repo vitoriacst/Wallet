@@ -11,26 +11,21 @@ class Wallet extends React.Component {
   }
 
   render() {
-    const {
-      currencies,
-    } = this.props;
-    console.log(currencies);
     return (
       <div>
         <Header />
-        <p>{currencies}</p>
       </div>
     );
   }
 }
-const mapStateToProps = (state) => ({
-  currencies: state.wallet.currencies,
-});
+// const mapStateToProps = (state) => ({
+//   currencies: state.wallet.currencies,
+// });
 // mapDispatch vem trazendo as infos
 const mapDispatchToProps = (dispatch) => ({
-  api: () => dispatch(TakeApi()),
+  api: (currencies) => dispatch(TakeApi(currencies)),
 });
 Wallet.propTypes = {
-  currencies: PropTypes.arrayOf(PropTypes.string),
+  api: PropTypes.func,
 }.isRequired;
-export default connect(mapStateToProps, mapDispatchToProps)(Wallet);
+export default connect(null, mapDispatchToProps)(Wallet);

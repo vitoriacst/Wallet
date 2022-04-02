@@ -1,6 +1,8 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 // import { GASTOS_TOTAIS } from '../actions';
 
+import { GET_CURRENCIES } from '../actions';
+
 // const INITIAL_STATE = {
 //   despesasTotais: 0,
 // };
@@ -22,10 +24,11 @@ const INITIAL_STATE = {
 
 const requisicaoAPi = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case requisicaoAPi:
+  case GET_CURRENCIES
+    :
     return {
       ...state,
-      currencies: action.currencies,
+      currencies: Object.keys(action.currencies).filter((element) => element !== 'USDT'),
     };
   default:
     return state;

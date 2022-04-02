@@ -7,8 +7,8 @@ function App() {
   return (
     // criando a rota do Login
     <Switch>
-      <Route exact path="/" component={ Login } />
       <Route exact path="/carteira" component={ Wallet } />
+      <Route exact path="/" component={ Login } />
     </Switch>
   );
 }

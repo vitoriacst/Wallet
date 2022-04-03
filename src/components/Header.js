@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Tabela from './Tabela';
 // import { GASTOS_TOTAIS } from '../actions';
 
 class Header extends React.Component {
@@ -24,8 +25,8 @@ class Header extends React.Component {
           <p>{email}</p>
           <p data-testid="header-currency-field">BRL</p>
           <h1 data-testid="total-field">0</h1>
-
         </header>
+        <Tabela />
       </div>
     );
   }

@@ -26,7 +26,6 @@ export function TakeApi() {
     try {
       const response = await fetchApiCurrencies();
       dispatch(getCurrencies(response));
-      console.log(response);
     } catch (error) {
       console.log(error);
     }

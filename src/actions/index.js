@@ -31,3 +31,10 @@ export function TakeApi() {
     }
   };
 }
+// criando a action da expenses
+export const GET_EXPENSES = 'GET_EXPENSES';
+export const getExpenses = (expenses) => (
+  {
+    type: GET_EXPENSES, value: expenses,
+  }
+);

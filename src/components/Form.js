@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getExpenses } from '../actions';
 import fetchApiCurrencies from '../service/fetchApiCurrencies';
+import { GET_EXPENSES } from '../actions';
 
 const estadoInicial = {
   id: '',
@@ -54,21 +54,15 @@ class Form extends React.Component {
         expenses,
       } = this.state;
       changeState(expenses);
+      this.setState((previousState) => ({
+        id: previousState.id + 1,
+        value: 0,
+        currency: 'BTC',
+        description: '',
+        tag: 'Transporte',
+        method: 'Dinheiro',
+      }));
     });
-  }
-
-  converteValue = () => {
-    const {
-      expensesValue,
-    } = this.props;
-    let total = 0;
-    if (expensesValue.length > 0) {
-      expensesValue.forEach((element) => {
-        const converte = element.exachangeRates[element.currency].ask;
-        total += element.value * converte;
-      });
-    }
-    return total.toFixed(2);
   }
 
   render() {
@@ -141,7 +135,7 @@ class Form extends React.Component {
         </label>
         <select
           data-testid="tag-input"
-          name={ tag }
+          name="tag"
           value={ tag }
           onChange={ this.handleChange }
         >
@@ -154,7 +148,7 @@ class Form extends React.Component {
         </select>
         <button
           type="button"
-          onClick={ this.saveChanges }
+          onClick={ this.handleChange }
         >
           Adicionar despesa
         </button>
@@ -166,7 +160,9 @@ class Form extends React.Component {
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
-  expensesValue: state.wallet.expenses,
+});
+const mapDispatchToProps = (dispatch) => ({
+  expensesCoins: (expenses) => dispatch(GET_EXPENSES(expenses)),
 });
 
 Form.propTypes = {

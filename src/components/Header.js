@@ -6,6 +6,20 @@ import Tabela from './Tabela';
 // import { GASTOS_TOTAIS } from '../actions';
 
 class Header extends React.Component {
+  convertedValue = () => {
+    const {
+      expensesTotal,
+    } = this.props;
+    let total = 0;
+    if (expensesTotal.length > 0) {
+      expensesTotal.forEach((element) => {
+        const converte = element.exachangeRates[element.currency].ask;
+        total += element.value * converte;
+      });
+    }
+    return total.toFixed(2);
+  }
+
   render() {
     const {
       email,
@@ -19,7 +33,7 @@ class Header extends React.Component {
         <header data-testid="email-field">
           <p>{email}</p>
           <p data-testid="header-currency-field">BRL</p>
-          <h1 data-testid="total-field">{expenses}</h1>
+          <h1 data-testid="total-field">{this.convertedValue()}</h1>
         </header>
         <Tabela />
       </div>
@@ -29,15 +43,11 @@ class Header extends React.Component {
 // ->pegando do global o email
 const mapStateToProps = (state) => ({
   email: state.user.email,
-  expenses: state.wallet.expenses,
+  expensesTotal: state.wallet.expenses,
 });
-//  const mapDispatchToProps = (dispatch) => ({
-  //  expenses: (expenses) => dispatch(getExpenses(expenses)),
-//  });
+
 Header.propTypes = {
   email: PropTypes.string.isRequired,
-};
-Header.propTypes = {
   expenses: PropTypes.func,
 }.isRequired;
 export default connect(mapStateToProps)(Header);

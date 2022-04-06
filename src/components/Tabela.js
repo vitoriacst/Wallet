@@ -54,7 +54,7 @@ class Tabela extends React.Component {
               } = item;
               const nomeDaMoeda = exchangeRates[currency].name.split('/');
               const converteValue = (exchangeRates[currency].ask * value).toFixed(2);
-              const takeAskValue = exchangeRates[currency].as;
+              const takeAskValue = exchangeRates[currency].ask;
               return (
                 <tr key={ id }>
                   <td>{description}</td>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import '../styles/Header.css';
+
 // -> aqui esta o componente Header
 class Header extends React.Component {
   convertedValue = () => {
@@ -24,9 +26,11 @@ class Header extends React.Component {
     return (
       <div className="Header">
         <header data-testid="email-field">
-          <p>{email}</p>
-          <p data-testid="header-currency-field">BRL</p>
-          <h1 data-testid="total-field">{this.convertedValue()}</h1>
+          <p className="email">{email}</p>
+          <section className="money">
+            <p data-testid="header-currency-field">BRL</p>
+            <h1 data-testid="total-field">{this.convertedValue()}</h1>
+          </section>
         </header>
       </div>
     );

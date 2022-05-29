@@ -1,0 +1,19 @@
+.table {
+  background-color: black;
+  color: white;
+}
+
+.thread {
+  font-size: 8px;
+}
+
+.div-table{
+  color: black;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  font-size: 8px;
+  align-items: center;
+  justify-content: space-around;
+
+
+}

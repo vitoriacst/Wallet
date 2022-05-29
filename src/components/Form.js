@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import fetchApiCurrencies from '../service/fetchApiCurrencies';
 import { GET_EXPENSES } from '../actions/index';
+import '../styles/Form.css';
 // -> recuperar e fazer outra requisicao
 
 const tagValue = 'Alimentação';
@@ -62,11 +63,12 @@ class Form extends React.Component {
     const { currencies } = this.props;
     const { value, description, currency, method, tag } = this.state;
     return (
-      <div>
+      <div className="div-form">
         <form>
           <label htmlFor="value-input">
-            valor
             <input
+              placeholder="value"
+              className="input"
               data-testid="value-input"
               type="number"
               name="value"
@@ -76,8 +78,9 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="description-input">
-            description
             <input
+              placeholder="description"
+              className="input"
               type="text"
               data-testid="description-input"
               id="description-input"
@@ -87,8 +90,8 @@ class Form extends React.Component {
             />
           </label>
           <label htmlFor="currency-input">
-            moeda
             <select
+              className="input"
               id="currency-input"
               data-testid="currency-input"
               name="currency"
@@ -104,8 +107,8 @@ class Form extends React.Component {
             </select>
           </label>
           <label htmlFor="method-input">
-            método de pagamento
             <select
+              className="input"
               data-testid="method-input"
               id="method-input"
               name="method"
@@ -119,8 +122,8 @@ class Form extends React.Component {
           </label>
 
           <label htmlFor="tag-input">
-            gastos
             <select
+              className="input"
               data-testid="tag-input"
               id="tag-input"
               name="tag"
@@ -136,11 +139,12 @@ class Form extends React.Component {
             </select>
           </label>
           <button
+            className="button-wallet"
             type="button"
             id="button"
             onClick={ this.saveChanges }
           >
-            Adicionar despesa
+            Add
           </button>
         </form>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Table.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // criando a tabela -> https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/table
@@ -8,8 +9,8 @@ class Tabela extends React.Component {
       expenses,
     } = this.props;
     return (
-      <table>
-        <thread>
+      <table className="table">
+        <thread className="thread">
           <tr>
             <th>
               Descrição
@@ -56,7 +57,7 @@ class Tabela extends React.Component {
               const converteValue = (exchangeRates[currency].ask * value).toFixed(2);
               const takeAskValue = exchangeRates[currency].ask;
               return (
-                <tr key={ id }>
+                <tr key={ id } className="div-table">
                   <td>{description}</td>
                   <td>{tag}</td>
                   <td>{method}</td>

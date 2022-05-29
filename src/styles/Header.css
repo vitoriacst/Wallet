@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
+
+.Header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  justify-content: flex-start;
+  width: 50%;
+
+}
+
+.email {
+  font-family: 'Barlow Condensed', sans-serif;
+
+}
+
+.money {
+  font-family: 'Teko', sans-serif;
+}

@@ -1,0 +1,41 @@
+.div-form {
+  align-items: center;
+  background-color: rgb(6, 132, 25);
+  color: white;
+  display: flex;
+  font-size: 10px;
+  height: 35px;
+  justify-content: center;
+}
+
+.input {
+  background-color: rgb(255, 255, 255);
+  font-size: 10px;
+  width: 50px;
+}
+
+.button-wallet {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  font-size: 8px;
+  height: 24px;
+  transition: all 0.5s ease;
+  width: 50px;
+
+}
+
+.button-wallet:hover {
+  background-color: rgb(40, 123, 62);
+  border: none;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 8px;
+  height: 24px;
+  transition: all 0.5s ease;
+  width: 50px;
+
+}

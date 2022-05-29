@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loginInputEmail } from '../actions/Login';
+import '../styles/LoginPage.css';
+import Wave from '../assets/Wave.svg';
+import Wallet from '../assets/wallet.svg';
 
 class Login extends React.Component {
   constructor() {
@@ -68,38 +71,42 @@ habilitButton = () => {
     } = this.state;
     // criacao do forms de login
     return (
-      <>
-        <div>Login</div>
-        <section>
-          <form>
-            <input
-              name="email"
-              type="email"
-              className="Input-login"
-              data-testid="email-input"
-              id="email"
-              onChange={ this.handleChange }
-              value={ email }
-            />
-            <input
-              name="password"
-              type="password"
-              className="Input-login"
-              data-testid="password-input"
-              onChange={ this.handleChange }
-              value={ password }
-            />
-            <button
-              type="button"
-              name="button"
-              disabled={ button }
-              onClick={ this.changeComponent }
-            >
-              Entrar
-            </button>
-          </form>
-        </section>
-      </>
+      <div className="main-login">
+        <img src={ Wave } alt="white wave" className="wave" />
+        <form className="form-main">
+          <img src={ Wallet } alt="white wave" className="wallet" />
+          <h1 className="title">Wallet</h1>
+          <h1 className="title-two">Sign In</h1>
+          <input
+            placeholder="Email"
+            name="email"
+            type="email"
+            className="Input"
+            data-testid="email-input"
+            id="email"
+            onChange={ this.handleChange }
+            value={ email }
+          />
+          <input
+            placeholder="Password"
+            name="password"
+            type="password"
+            className="Input"
+            data-testid="password-input"
+            onChange={ this.handleChange }
+            value={ password }
+          />
+          <button
+            type="button"
+            name="button"
+            disabled={ button }
+            onClick={ this.changeComponent }
+            className="button"
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
     );
   }
 }

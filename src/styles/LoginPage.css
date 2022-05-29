@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,200&display=swap');
+
+* {
+  border: 0;
+  margin: 0;
+}
+
+.main-login {
+  align-items: center;
+  background: #44a08d;  /* fallback for old browsers */
+  background: linear-gradient(to right, #093637, #44a08d);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #093637, #44a08d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  height: 44.5rem;
+  justify-content: center;
+  left: -180px;
+  top: -431px;
+  width: 360px;
+}
+
+.form-main {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.37);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 400px;
+  justify-content: center;
+  left: 60px;
+  margin-top: 10px;
+  top: 224px;
+  width: 250px;
+  z-index: 1;
+
+}
+
+.Input {
+  border-radius: 8px;
+  color: black;
+  font-size: 18px;
+  height: 54px;
+  left: 70px;
+  top: 363px;
+  width: 218px;
+
+}
+
+.button {
+  border: none;
+  border-radius: 0;
+  color: #444;
+  cursor: pointer;
+  font-size: 16px;
+  height: 41px;
+  left: 95px;
+  text-align: center;
+  top: 555px;
+  transition: all 0.5s ease;
+  width: 170px;
+
+}
+
+.button:enabled {
+  background-color: #1b3530;
+  border: none;
+  border-radius: 0;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 16px;
+  height: 41px;
+  left: 95px;
+  top: 555px;
+  transition: all 0.5s ease;
+  width: 170px;
+}
+
+.button:enabled:hover {
+  background-color: #2d423e;
+  border: none;
+  border-radius: 0;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 16px;
+  height: 41px;
+  left: 95px;
+  top: 555px;
+  transition: all 0.5s ease;
+  width: 170px;
+}
+
+.wave {
+  left: 0;
+  position: absolute;
+  top: -30px;
+  width: 100%;
+}
+
+.title {
+  color: white;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 40px;
+  z-index: 1;
+}
+
+.title-two {
+  color: white;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 25px;
+  z-index: 1;
+}
+
+.wallet {
+  z-index: 1;
+}
